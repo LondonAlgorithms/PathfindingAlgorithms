@@ -77,16 +77,15 @@ Given Romeo's and Juliet's position in the matrix, **find out the shortest
 path from Romeo to Juliet**.
 
 ---
-
 ## Input
 
 N, M - integers
 
 X[N][M] - matrix of Integers
 
-X1, Y1 - the position of Romeo
+X1, Y1 - the position of Romeo (row, column)
 
-X2, Y2 - the position of Juliet
+X2, Y2 - the position of Juliet (row, column)
 
 ---
 Javascript
@@ -105,7 +104,7 @@ Romeo's place
 
 ---
 Ruby
-### `RomeoAndJuliet.new(n, m, matrix, x1, x2, y2)`
+#### `RomeoAndJuliet.new(n, m, matrix, x1, x2, y2)`
 
 - `n` (`Integer`) number of rows
 - `m` (`Integer`) number of columns
@@ -218,3 +217,49 @@ N - the number of pairs of stations and the cost to go from one to the other
 Links - `Array` of `tuples` formed of (start_station, end_station, cost), where every
 element of the tuple is an `Integer`
 
+---
+Javascript
+#### `findTheWay(links, start_station, end_station)`
+
+- `links` (`Array` of `tuples`) - describing the cost between two stations (as
+per previous slide)
+- `start` (`Integer`) the start station, from which John starts
+- `end_station` (`Integer`) the end station where he meets Charlie
+- returns: (`Integer`, `Integer`) - first the number of stations through which
+John passes, followed by the total cost of the trip
+
+---
+Ruby
+
+#### `FindTheWay.new(links, start_station, end_station)`
+
+- `links` (`Array` of `tuples`) - describing the cost between two stations (as
+per previous slide)
+- `start` (`Integer`) the start station, from which John starts
+- `end_station` (`Integer`) the end station where he meets Charlie
+- returns: (`Integer`, `Integer`) - first the number of stations through which
+John passes, followed by the total cost of the trip
+
+---
+
+## Djisktra's Algorithm
+
+- Have an array for visited stations (visited)
+- Have an array for the cost of getting to each station (costs); initialize this
+with INFINITY (... or close to it)
+- Have an array of current nodes, sorted by the lowest cost of the node
+
+---
+
+## Djikstra's Algorithm
+
+1. Add the start node to the `current_nodes` array, with a cost of 0
+
+2. Pick the node with the least cost from `current_nodes` (selected)
+
+3. Add all of the nodes you can reach from the selected node to the
+`current_nodes` array, and update their cost in the `costs` array, by summing up
+the cost of the `selected` node and the cost of the link from the selected node
+to the node
+
+4. Mark the `selected` node as visited, and return to step 2
