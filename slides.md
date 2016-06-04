@@ -69,19 +69,152 @@ Lee's Algorithm - Step 3
 Romeo and Juliet live in a _strange city_.
 The city can be represented as a matrix of N rows and M columns (NxM),
 and each block can be represented as either a 0 (can pass through),
-or a 1 (cannot pass through).
+or a -1 (cannot pass through).
+
+Romeo can travel on 4 directions: _up_, _down_, _left_ and _right_.
 
 Given Romeo's and Juliet's position in the matrix, **find out the shortest
 path from Romeo to Juliet**.
 
 ---
 
-#### `romeoAndJuliet(n, m, matrix, romeo, juliet)`
-- param1: `n` (`Integer`) number of rows
-- param1: `m` (`Integer`) number of columns
-- param2: `matrix` (`Array of Array of Integers`) the matrix describind Romeo
+## Input
+
+N, M - integers
+
+X[N][M] - matrix of Integers
+
+X1, Y1 - the position of Romeo
+
+X2, Y2 - the position of Juliet
+
+---
+Javascript
+#### `romeoAndJuliet(n, m, matrix, x1, y1, x2, y2)`
+
+- `n` (`Integer`) number of rows
+- `m` (`Integer`) number of columns
+- `matrix` (`Array of Array of Integers`) the matrix describind Romeo
+- `x1` the row of Romeo
+- `y1` the column of Romeo
+- `x2` the row of Juliet
+- `y2` the column of Juliet
 and Juliet's city
 - returns: (`Integer`) the number of moves required to reach Juliet from
 Romeo's place
 
 ---
+Ruby
+### `RomeoAndJuliet.new(n, m, matrix, x1, x2, y2)`
+
+- `n` (`Integer`) number of rows
+- `m` (`Integer`) number of columns
+- `matrix` (`Array of Array of Integers`) the matrix describind Romeo
+- `x1` the row of Romeo
+- `y1` the column of Romeo
+- `x2` the row of Juliet
+- `y2` the column of Juliet
+and Juliet's city
+- returns: (`Integer`) the number of moves required to reach Juliet from
+Romeo's place
+
+---
+
+### Example
+
+N: 4
+M: 5
+Romeo's position is: (0,0)
+Juliet's position is: (3,4)
+
+Matrix looks like this:
+| 0 | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 0 | -1 | -1 | 0  | -1 |
+| 0 | 0  | 0  | -1 | 0  |
+| 0 | -1 | 0  | 0  | 0  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 0 | -1 | -1 | 0  | -1 |
+| 0 | 0  | 0  | -1 | 0  |
+| 0 | -1 | 0  | 0  | J  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| **1** | -1 | -1 | 0  | -1 |
+| 0 | 0  | 0  | -1 | 0  |
+| 0 | -1 | 0  | 0  | J  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 1 | -1 | -1 | 0  | -1 |
+| **2** | 0  | 0  | -1 | 0  |
+| 0 | -1 | 0  | 0  | J  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 1 | -1 | -1 | 0  | -1 |
+| 2 | **3**  | 0  | -1 | 0  |
+| 0 | -1 | 0  | 0  | J  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 1 | -1 | -1 | 0  | -1 |
+| 2 | 3| **4**  | -1 | 0  |
+| 0 | -1 | 0  | 0  | J  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 1 | -1 | -1 | 0  | -1 |
+| 2 | 3| 4| -1 | 0  |
+| 0 | -1 | **5**  | 0  | J  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 1 | -1 | -1 | 0  | -1 |
+| 2 | 3| 4| -1 | 0  |
+| 0 | -1 | 5| **6**  | J  |
+
+---
+
+| R | 0  | 0  | 0  | 0  |
+|---|----|----|----|----|
+| 1 | -1 | -1 | 0  | -1 |
+| 2 | 3  | 4  | -1 |  0 |
+| 0 | -1 | 5| 6  | **7** ~ J  |
+
+---
+
+## Challenge 2
+
+John is living in London. He now has to travel across the city to visit his
+good friend Charlie. However, John is not very well acquainted with the
+transportation system in London and still finds it very confusing (and expensive).
+
+John knows a list of stops from the city and how expensive is to travel from one
+to the other. He also knows where he wants to meet his friend Charlie.
+
+Can you help John select the cheapest way to see his friend Charlie?
+
+---
+
+## Input
+N - the number of pairs of stations and the cost to go from one to the other
+Links - `Array` of `tuples` formed of (start_station, end_station, cost), where every
+element of the tuple is an `Integer`
+
