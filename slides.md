@@ -34,37 +34,10 @@ Alex
 ### Depth first search
 ![dfs](https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif)
 
----
-
-Lee's Algorithm
-
-- Implements a simple BFS algorithm
-- Has a start position
-- Has a goal(end) position
-- Implementation that is based on a matrix
-
----
-Lee's Algorithm - Step 1
-
-- Add start position to array of positions to be inspected
 
 ---
 
-Lee's Algorithm - Step 2
-
-- Pick first element from array
-- Add all visitable neighbours of this element to the end of the array
-- Pop element from the array
-
----
-
-Lee's Algorithm - Step 3
-
-- Repeat *Step 2* until you reach the goal position
-
----
-
-## Challenge 1: Romeo & Juliet
+## Challenge 1
 
 John and Mike live in a _strange city_, which resembles New York.
 The city can be represented as a matrix of N rows and M columns (NxM),
@@ -92,12 +65,14 @@ X2, Y2 - the position of Mike (row, column)
 ## Input (2)
 
 The numbering of the rows start at 0 and finishes at N-1
+
 The numbering of columns starts at 0 and finishes at M-1
+
 If there is no path from John to Mike, return -1
 
 ---
 Javascript
-#### `romeoAndJuliet(n, m, matrix, x1, y1, x2, y2)`
+#### `pathfinder(n, m, matrix, x1, y1, x2, y2)`
 
 - `n` (`Integer`) number of rows
 - `m` (`Integer`) number of columns
@@ -111,7 +86,7 @@ Mike's position
 
 ---
 Ruby
-#### `RomeoAndJuliet.new(n, m, matrix, x1, x2, y2).solve`
+#### `Pathfinder.new(n, m, matrix, x1, x2, y2).solve`
 
 - `n` (`Integer`) number of rows
 - `m` (`Integer`) number of columns
@@ -129,7 +104,9 @@ Mike's position
 
 N: 4
 M: 5
+
 John's position is: (0,0)
+
 Mike's position is: (3,4)
 
 Matrix looks like this:
@@ -211,6 +188,33 @@ Answer: 7
 
 ---
 
+Lee's Algorithm
+
+- Implements a simple BFS algorithm
+- Has a start position
+- Has a goal(end) position
+- Implementation that is based on a matrix
+
+---
+Lee's Algorithm - Step 1
+
+- Add start position to array of positions to be inspected
+
+---
+
+Lee's Algorithm - Step 2
+
+- Pick first element from array
+- Add all visitable neighbours of this element to the end of the array
+- Pop element from the array
+
+---
+
+Lee's Algorithm - Step 3
+
+- Repeat *Step 2* until you reach the goal position
+
+---
 ## Challenge 2
 
 John is living in London. He now has to travel across the city to visit his
