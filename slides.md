@@ -66,26 +66,34 @@ Lee's Algorithm - Step 3
 
 ## Challenge 1: Romeo & Juliet
 
-Romeo and Juliet live in a _strange city_.
+John and Mike live in a _strange city_, which resembles New York.
 The city can be represented as a matrix of N rows and M columns (NxM),
 and each block can be represented as either a 0 (can pass through),
 or a -1 (cannot pass through).
 
-Romeo can travel on 4 directions: _up_, _down_, _left_ and _right_.
+John can travel on 4 directions: _up_, _down_, _left_ and _right_.
 
-Given Romeo's and Juliet's position in the matrix, **find out the shortest
-path from Romeo to Juliet**.
+Given John's and Mike's position in the matrix, **find out the shortest
+path from John to Mike**.
 
 ---
 ## Input
 
 N, M - integers
 
-X[N][M] - matrix of Integers
+X[N][M] - matrix of Integers (matrix row,column numbering starts at 0)
 
-X1, Y1 - the position of Romeo (row, column)
 
-X2, Y2 - the position of Juliet (row, column)
+X1, Y1 - the position of John (row, column)
+
+X2, Y2 - the position of Mike (row, column)
+
+---
+## Input (2)
+
+The numbering of the rows start at 0 and finishes at N-1
+The numbering of columns starts at 0 and finishes at M-1
+If there is no path from John to Mike, return -1
 
 ---
 Javascript
@@ -93,29 +101,27 @@ Javascript
 
 - `n` (`Integer`) number of rows
 - `m` (`Integer`) number of columns
-- `matrix` (`Array of Array of Integers`) the matrix describind Romeo
-- `x1` the row of Romeo
-- `y1` the column of Romeo
-- `x2` the row of Juliet
-- `y2` the column of Juliet
-and Juliet's city
-- returns: (`Integer`) the number of moves required to reach Juliet from
-Romeo's place
+- `matrix` (`Array of Array of Integers`) the matrix describind the city
+- `x1` the row of John
+- `y1` the column of John
+- `x2` the row of Mike
+- `y2` the column of Mike
+- returns: (`Integer`) the number of moves required John has to make to reach
+Mike's position
 
 ---
 Ruby
-#### `RomeoAndJuliet.new(n, m, matrix, x1, x2, y2)`
+#### `RomeoAndJuliet.new(n, m, matrix, x1, x2, y2).solve`
 
 - `n` (`Integer`) number of rows
 - `m` (`Integer`) number of columns
-- `matrix` (`Array of Array of Integers`) the matrix describind Romeo
-- `x1` the row of Romeo
-- `y1` the column of Romeo
-- `x2` the row of Juliet
-- `y2` the column of Juliet
-and Juliet's city
-- returns: (`Integer`) the number of moves required to reach Juliet from
-Romeo's place
+- `matrix` (`Array of Array of Integers`) the matrix describind the city
+- `x1` the row of John
+- `y1` the column of John
+- `x2` the row of Mike
+- `y2` the column of Mike
+- returns: (`Integer`) the number of moves required John has to make to reach
+Mike's position
 
 ---
 
@@ -123,8 +129,8 @@ Romeo's place
 
 N: 4
 M: 5
-Romeo's position is: (0,0)
-Juliet's position is: (3,4)
+John's position is: (0,0)
+Mike's position is: (3,4)
 
 Matrix looks like this:
 | 0 | 0  | 0  | 0  | 0  |
@@ -135,67 +141,73 @@ Matrix looks like this:
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 0 | -1 | -1 | 0  | -1 |
 | 0 | 0  | 0  | -1 | 0  |
-| 0 | -1 | 0  | 0  | J  |
+| 0 | -1 | 0  | 0  | M  |
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | **1** | -1 | -1 | 0  | -1 |
 | 0 | 0  | 0  | -1 | 0  |
-| 0 | -1 | 0  | 0  | J  |
+| 0 | -1 | 0  | 0  | M  |
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 1 | -1 | -1 | 0  | -1 |
 | **2** | 0  | 0  | -1 | 0  |
-| 0 | -1 | 0  | 0  | J  |
+| 0 | -1 | 0  | 0  | M  |
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 1 | -1 | -1 | 0  | -1 |
 | 2 | **3**  | 0  | -1 | 0  |
-| 0 | -1 | 0  | 0  | J  |
+| 0 | -1 | 0  | 0  | M  |
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 1 | -1 | -1 | 0  | -1 |
 | 2 | 3| **4**  | -1 | 0  |
-| 0 | -1 | 0  | 0  | J  |
+| 0 | -1 | 0  | 0  | M  |
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 1 | -1 | -1 | 0  | -1 |
 | 2 | 3| 4| -1 | 0  |
-| 0 | -1 | **5**  | 0  | J  |
+| 0 | -1 | **5**  | 0  | M  |
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 1 | -1 | -1 | 0  | -1 |
 | 2 | 3| 4| -1 | 0  |
-| 0 | -1 | 5| **6**  | J  |
+| 0 | -1 | 5| **6**  | M  |
 
 ---
 
-| R | 0  | 0  | 0  | 0  |
+| J | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 1 | -1 | -1 | 0  | -1 |
 | 2 | 3  | 4  | -1 |  0 |
-| 0 | -1 | 5| 6  | **7** ~ J  |
+| 0 | -1 | 5| 6  | **7** ~ M  |
+
+---
+
+Answer: 7
+
+(0,0)->(1,0)->(2,0)->(2,1)->(2,2)->(3,2)->(3,3)->(3,4)
 
 ---
 
