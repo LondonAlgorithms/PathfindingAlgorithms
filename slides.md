@@ -39,38 +39,47 @@ Alex
 
 ## Challenge 1
 
-John and Mike live in a _strange city_, which resembles New York.
-The city can be represented as a matrix of N rows and M columns (NxM),
-and each block can be represented as either a 0 (can pass through),
-or a -1 (cannot pass through).
+John and Mike live in New York, or something like it.
+
+- matrix of N rows and M columns (NxM)
+- each block can be represented as either a 0 (can pass through)
+- or a -1 (cannot pass through)
+
+---
 
 John can travel on 4 directions: _up_, _down_, _left_ and _right_.
 
-Given John's and Mike's position in the matrix, **find out the shortest
-path from John to Mike**.
+**find out the shortest path from John to Mike**.
 
 ---
 ## Input
 
 N, M - integers
 
-X[N][M] - matrix of Integers (matrix row,column numbering starts at 0)
-
+X[N][M] - matrix of Integers (matrix row, column numbering starts at 0)
 
 X1, Y1 - the position of John (row, column)
 
 X2, Y2 - the position of Mike (row, column)
 
 ---
-## Input (2)
 
-The numbering of the rows start at 0 and finishes at N-1
+## Input
 
-The numbering of columns starts at 0 and finishes at M-1
+rows start at 0 and finish at N-1
+
+columns start at 0 and finish at M-1
+
+---
+
+## Output
+
+The *number of moves* John has to make to reach Mike's position
 
 If there is no path from John to Mike, return -1
 
 ---
+
 Javascript
 #### `pathfinder(n, m, matrix, x1, y1, x2, y2)`
 
@@ -109,7 +118,8 @@ John's position is: (0,0)
 
 Mike's position is: (3,4)
 
-Matrix looks like this:
+---
+
 | 0 | 0  | 0  | 0  | 0  |
 |---|----|----|----|----|
 | 0 | -1 | -1 | 0  | -1 |
@@ -178,13 +188,13 @@ Matrix looks like this:
 |---|----|----|----|----|
 | 1 | -1 | -1 | 0  | -1 |
 | 2 | 3  | 4  | -1 |  0 |
-| 0 | -1 | 5| 6  | **7** ~ M  |
+| 0 | -1 | 5| 6  | **7 ~ M**  |
 
 ---
 
 Answer: 7
 
-(0,0)->(1,0)->(2,0)->(2,1)->(2,2)->(3,2)->(3,3)->(3,4)
+(0, 0) -> (1, 0) -> (2, 0) -> (2, 1) -> (2, 2) -> (3, 2) -> (3, 3) -> (3, 4)
 
 ---
 
